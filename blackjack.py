@@ -1,3 +1,7 @@
+import random
+import time
+
+
 class reassign(object):
     #This class stores the integer number of the player's value once they abstain at any point
     #reassign_pv will be used to compare compturn vlue to player value and return a string 
@@ -17,7 +21,7 @@ class reassign2(object):
         return self.dvalue
 
 class wintotal(object):
-    def __init__(self, wins):
+    def __init__(self, wins=0):
         self.wins = wins
 
     def reassignwins(self):
@@ -41,351 +45,311 @@ def cont():
 
 def compturn():
     #This function is called when the plyer abstains
-    #The dealer will abstain at a value of >16
+    #The dealer will abstain at a value of >16 unless they are "feeling lucky" ;)
+    print("\n\n\nDEALER TURN\n\n\n")
+
     while True:
 
-        import random
+        
         card1 = random.randint(1,10)
         card2 = random.randint(1,10)
-        val = card1 + card2
 
-        q = input('\n\n Its now the dealers turn...PRESS "Y" TO CONTINUE  ').lower()
-        if q == 'y':
-            print(card1, card2, '(', card1+card2, ')')
-            print('^^^^^ These are the dealers cards')
-            if val <= 16:
-                cont()
-                print('The dealer will get a new card')
-                card3 = random.randint(1,10)
-                val2 = val + card3
-                print('The new card is ', card3,'... Value is now ', val2)
-                
-                if val2 <= 16:
-                    cont()
-                    print('The dealer will get a new card')
-                    card4 = random.randint(1,10)
-                    val3 = val2 + card4
-                    print('The new card is ', card4,'... Value is now ', val3)
-
-                    if val3 <= 16:
-                        cont()
-                        print('The dealer will get a new card')
-                        card5 = random.randint(1,10)
-                        val4 = val3 + card5
-                        print('The new card is ', card5,'... Value is now ', val4)
-
-                        if val4 <= 16:
-                            cont()
-                            print('The dealer will get a new card')
-                            card6 = random.randint(1,10)
-                            val5 = val4 + card6
-                            print('The new card is ', card6,'... Value is now ', val5)
-
-                            if val5 <=16:
-                                cont()
-                                print('The dealer will get a new card')
-                                card7 = random.randint(1,10)
-                                val6 = val5 + card7
-                                print('The new card is ', card7,'... Value is now ', val6)
-
-                                if val6 <= 16:
-                                    cont()
-                                    print('The dealer will get a new card')
-                                    card8 = random.randint(1,10)
-                                    val7 = val6 + card8
-                                    print('The new card is ', card8,'... Value is now ', val7)
-
-                                elif val6 > 16 and val6 < 21:
-                                    print('The dealer will abstain')
-                                    var = reassign2(val6)
-                                    a = var.reassign_dv()
-                                    if a < check.reassign_pv():
-                                        print('\n\t YOU WIN!! Your value of ', check.reassign_pv(), ' was greater than the dealers value of ', val6)
-                                        break
-                                    elif a == check.reassign_pv():
-                                        print('\n\t TIE GAME!! Your value of ', check.reassign_pv(), ' was equal to the dealers value of ', val6)
-                                        break
-                                    else:
-                                        print('\n\t You loose, your value of ', check.reassign_pv(), ' was less than the dealers value of ', val6)
-                                        break
-
-                                elif val6 == 21:
-                                    print('The dealer wins!!')
-                                    if not endgame():
-                                        break
-
-                                elif val6 > 21:
-                                    print('You win, the dealer is over 21!')
-                                    break
-
-                            elif val5 > 16 and val5 < 21:
-                                print('The dealer will abstain')
-                                var2 = reassign2(val5)
-                                b = var2.reassign_dv()
-                                if b < check.reassign_pv():
-                                    print('\n\t YOU WIN!! Your value of ', check.reassign_pv(), ' was greater than the dealers value of ', val5)
-                                    break
-                                elif b == check.reassign_pv():
-                                    print('\n\t TIE GAME!! Your value of ', check.reassign_pv(), ' was equal to the dealers value of ', val5)
-                                    break
-                                else:
-                                    print('\n\t YOU LOOSE!! Your value of ', check.reassign_pv(), ' was less than the dealers value of ', val5)
-                                    break
-
-                            elif val5 == 21:
-                                print('The dealer wins!!')
-                                if not endgame():
-                                    break
-                                else:
-                                    break
-
-                            elif val5 > 21:
-                                print('You win, the dealer is over 21!')
-                                break
-
-                        elif val4 > 16 and val4 < 21:
-                            print('The dealer will abstain')
-                            var3 = reassign2(val4)
-                            c = var3.reassign_dv()
-                            if c < check.reassign_pv():
-                                print('\n\t YOU WIN!! Your value of ', check.reassign_pv(), ' was greater than the dealers value of ', val4)
-                                break
-                            elif c == check.reassign_pv():
-                                print('\n\t TIE GAME!! Your value of ', check.reassign_pv(), ' was equal to the dealers value of ', val4)
-                                break
-                            else:
-                                print('\n\t YOU LOSE!! Your value of ', check.reassign_pv(), ' was less than the dealers value of ', val4)
-                                break
-
-                        elif val4 == 21:
-                            print('The dealer wins!!')
-                            if not endgame():
-                                break
-                            else:
-                                break
-
-                        elif val4 > 21:
-                            print('You win, the dealer is over 21!')
-                            break
-
-                    elif val3 > 16 and val3 < 21:
-                        print('The dealer will abstain')
-                        var4 = reassign2(val3)
-                        d = var4.reassign_dv()
-                        if d < check.reassign_pv():
-                            print('\n\t YOU WIN!! Your value of ', check.reassign_pv(), ' was greater than the dealers value of ', val3)
-                            break
-                        elif d == check.reassign_pv():
-                            print('\n\t TIE GAME!! Your value of ', check.reassign_pv(), ' was equal to the dealers value of ', val3)
-                            break
-                        else:
-                            print('\n\t YOU LOOSE!! Your value of ', check.reassign_pv(), ' was less than the dealers value of ', val3)
-                            break
-
-                    elif val3 == 21:
-                        print('The dealer wins!!')
-                        if not endgame():
-                            break
-                        else:
-                            break
-
-                    elif val3 > 21:
-                        print('You win, the dealer is over 21!')
-                        break
-
-                elif val2> 16 and val2<21:
-                    print('The dealer abstains')
-                    var5 = reassign2(val2)
-                    e = var5.reassign_dv()
-                    if e < check.reassign_pv():
-                        print('\n\t YOU WIN!! Your value of ', check.reassign_pv(), ' was greater than the dealers value of ', val2)
-                        break
-                    elif e == check.reassign_pv():
-                        print('\n\t TIE GAME!! Your value of ', check.reassign_pv(), ' was equal to the dealers value of ', val2)
-                        break
-                    else: 
-                        print('\n\t YOU LOOSE!! Your value of ', check.reassign_pv(), ' was less than the dealers value of ', val2)
-                        break
-
-                elif val2 == 21:
-                    print('The dealer wins!!')
-                    if not endgame():
-                        break
-                    else:
-                        break
-
-                elif val2 > 21:
-                    print('You win, the dealer went over 21!!') 
-                    break                                       
-            
-            elif val> 16 and val<21:
-                print('The dealer abstains')
-                var6 = reassign2(val)
-                f = var6.reassign_dv()
-                if f < check.reassign_pv():
-                    print('\n\t YOU WIN!! Your value of ', check.reassign_pv(), ' was greater than the dealers value of ', val)
-                    break
-                elif f == check.reassign_pv():
-                    print('\n\t TIE GAME!! Your value of ', check.reassign_pv(), ' was equal to the dealers value of ', val)
-                    break
-                else:
-                    print('\n\t YOU LOOSE!! Your value of ', check.reassign_pv(), ' was less than the dealers value of ', val)
-                    break
-
-            elif val == 21:
-                print('Theh dealer wins!!')
-                if not endgame():
-                    break
-                else:
-                    break
-
-            elif val > 21:
-                print('You win, the dealer went over 21!!')  
-                break                                      
-    
-        
+        CHANCE = random.randint(1,100)
+        if CHANCE <= 20:
+            CHANCE = True
         else:
-            print('Loading...')
+            CHANCE = False
+
+        #q = input('\n\n Its now the dealers turn...PRESS "Y" TO CONTINUE  ').lower()
+        #if q == 'y':
+        card1 = random.randint(1,10)
+        card2 = random.randint(1,10)
+
+
+        while True:
+            print("Dealer cards are ", card1, " and ", card2)
+            value = card1 + card2
+            print("\tVALUE = ", value)
+
+            while value <= 16:
+                #cont()
+                time.sleep(2)
+                new_card = random.randint(1,10)
+                print("Dealer draws a " , new_card)
+                value += new_card
+                print('\t','VALUE = ',value)
+
+            if  value < 21 and CHANCE:
+                #cont()
+                time.sleep(2)
+                print("\t\tDEALER IS FEELING LUCKY!!!")
+                new_card = random.randint(1,10)
+                print("Dealer draws a " , new_card)
+                value += new_card
+                print('\t',"VALUE = ", value)
+
+            if value < check.reassign_pv():
+                print('you win, the dealers value of ', value, ' was less than your ', check.reassign_pv() ) 
+                data_file = open('wins.txt', 'r')
+                win_total = int(data_file.read())
+                win_total += 1
+                print('\n\n...................',win_total,' TOTAL WINS...................\n\n')
+                data_file.close()
+                data_file = open('wins.txt', 'w')
+                data_file.write(str(win_total))
+                data_file.close()
+            elif value > check.reassign_pv() and value <= 21:
+                print('you lose, the dealers value of ', value, ' was more than your ', check.reassign_pv() )
+            elif value > 21:
+                print('you win, the dealers value of ' , value, ' went over 21' )
+                data_file = open('wins.txt', 'r')
+                win_total = int(data_file.read())
+                win_total += 1
+                print('\n\n...................',win_total,' TOTAL WINS...................\n\n')
+                data_file.close()
+                data_file = open('wins.txt', 'w')
+                data_file.write(str(win_total))
+                data_file.close()
+
             break
+        break
+
+    
+    #else:
+    #   print('Loading...')
+    #break
 
 
 def playerturn():
     # This function is the players turn.
-    while True:
-    
-        import random
+    def manual_play():
+        while True:
+        
+            card1 = random.randint(1,10)
+            card2 = random.randint(1,10)
+
+            print('\n',card1, card2, '(value of ',card1+card2, ')')
+            #Q sees if the palyer want to hit or absatin... if abstain at any point, go to computer/dealer turn
+            q = input('^^^^^ You have been delt these 2 cards  do you want to HIT or ABSTAIN?  [H/A]').lower()
+            if q.startswith('h'):
+                card3 = random.randint(1,10)
+                print('Your new card is ', card3)
+                val = card1 + card2 + card3
+                print('You have a value of ', val)
+
+                if val > 21:
+                    print('SORRY, you have lost the game')
+                    if not endgame():
+                        break
+                elif val == 21:
+                    print('CONGRATULAIONS, you have won the game')
+                    if not endgame():
+                        break
+
+                elif val < 21:
+                    print('\n', val)
+                    q2 = input('This is your value, do you want to HIT or ABSTAIN?  [H/A]').lower()
+                    if q2.startswith('h'):
+                        
+                        card4 = random.randint(1,10)
+                        print('Your new card is ', card4)
+                        val2 = val + card4
+                        print('You have a value of ', val2)
+                        if val2 > 21:
+                            print('SORRY, you have lost the game')
+                            if not endgame():
+                                break
+                        elif val2 == 21:
+                            print('CONGRATULAIONS, you have won the game')
+                            if not endgame():
+                                break
+                        elif val2 < 21:
+                            print('\n', val2)
+                            q3 = input('This is your value, do you want to HIT or ABSTAIN?  [H/A]').lower()
+                            if q3.startswith('h'):
+                        
+                                card5 = random.randint(1,10)
+                                print('Your new card is ', card5)
+                                val3 = val2 + card5
+                                print('You have a value of ', val3)
+
+                                if val3 > 21:
+                                    print('SORRY, you have lost the game')
+                                    if not endgame():
+                                        break
+                                elif val3 == 21:
+                                    print('CONGRATULAIONS, you have won the game')
+                                    if not endgame():
+                                        break
+                                elif val3 < 21:
+                                    print('\n', val3)
+                                    q4 = input('This is your value, do you want to HIT or ABSTAIN?  [H/A]').lower()
+                                    if q4.startswith('h'):
+                                
+                                        card6 = random.randint(1,10)
+                                        print('Your new card is ', card6)
+                                        val4 = val3 + card6
+                                        print('You have a value of ', val4)
+
+                                        if val4 > 21:
+                                            print('SORRY, you have lost the game')
+                                            if not endgame():
+                                                break
+                                        elif val4 == 21:
+                                            print('CONGRATULAIONS, you have won the game')
+                                            if not endgame():
+                                                break
+                                        elif val4 < 21:
+                                            print('\n', val4)
+                                            q5 = input('This is your value, do you want to HIT or ABSTAIN?  [H/A]').lower()
+                                            if q5.startswith('h'):
+
+                                                card7 = random.randint(1,10)
+                                                print('Your new card is ', card7)
+                                                val5 = val4 + card7
+                                                print('You have a value of ', val5)
+
+                                                if val5 > 21:
+                                                    print('SORRY, you have lost the game')
+                                                    if not endgame():
+                                                        break
+                                                elif val5 == 21:
+                                                    print('CONGRATULAIONS, you have won the game')
+                                                    if not endgame():
+                                                        break
+                                                elif val4 < 21:
+                                                    break
+                                            
+                                            elif q5.startswith('a'):
+                                                print('Your value is ', val4)
+                                                global check
+                                                #Check is global so that it ca be called in compturn 
+                                                #check is reassigned and stored in the class, then compturn is called
+                                                check = reassign(val4)
+                                                check.reassign_pv()
+                                                compturn()
+                                                break
+
+                                    elif q4.startswith('a'):
+                                        print('Your value is ', val3)
+                                        check = reassign(val3)
+                                        check.reassign_pv()
+                                        compturn()
+                                        break                    
+
+                            elif q3.startswith('a'):
+                                print('Your value is ', val2)
+                                check = reassign(val2)
+                                check.reassign_pv()
+                                compturn()
+                                break
+
+                    elif q2.startswith('a'):
+                        print('Your value is', val)
+                        check = reassign(val)
+                        check.reassign_pv()
+                        compturn()
+                        break    
+
+            elif q.startswith('a'):
+                print('You have a value of ', card1+card2)
+                check = reassign(card1+card2)
+                check.reassign_pv()
+                compturn()
+                break
+    def auto_play():
+        print("\n\n\PLAYER TURN\n\n\n")
+
+        global check
         card1 = random.randint(1,10)
         card2 = random.randint(1,10)
 
-        print('\n',card1, card2, '(value of ',card1+card2, ')')
-        #Q sees if the palyer want to hit or absatin... if abstain at any point, go to computer/dealer turn
-        q = input('^^^^^ You have been delt these 2 cards  do you want to HIT or ABSTAIN?  [H/A]').lower()
-        if q.startswith('h'):
-            card3 = random.randint(1,10)
-            print('Your new card is ', card3)
-            val = card1 + card2 + card3
-            print('You have a value of ', val)
+        CHANCE = random.randint(1,100)
+        if CHANCE <= 20:
+            CHANCE = True
+        else:
+            CHANCE = False
 
-            if val > 21:
-                print('SORRY, you have lost the game')
-                if not endgame():
-                    break
-            elif val == 21:
-                print('CONGRATULAIONS, you have won the game')
-                if not endgame():
-                    break
 
-            elif val < 21:
-                print('\n', val)
-                q2 = input('This is your value, do you want to HIT or ABSTAIN?  [H/A]').lower()
-                if q2.startswith('h'):
+
+        while True:
+            print("YOUR cards are ", card1, " and ", card2)
+            value = card1 + card2
+            print("\tVALUE = ", value)
+
+            while value <= 16:
+                #cont()
+                time.sleep(2)
+                new_card = random.randint(1,10)
+                print("YOU DRAW A " , new_card)
+                value += new_card
+                print('\t','VALUE = ',value)
+
+            if  value < 21 and CHANCE:
+                #cont()
+                time.sleep(2)
+                print("\t\YOU ARE FEELING LUCKY!!!")
+                new_card = random.randint(1,10)
+                print("YOU GET A " , new_card)
+                value += new_card
+                print('\t',"VALUE = ", value)
+
+                if value > 21:
+                    print('You LOSE!!')
                     
-                    card4 = random.randint(1,10)
-                    print('Your new card is ', card4)
-                    val2 = val + card4
-                    print('You have a value of ', val2)
-                    if val2 > 21:
-                        print('SORRY, you have lost the game')
-                        if not endgame():
-                            break
-                    elif val2 == 21:
-                        print('CONGRATULAIONS, you have won the game')
-                        if not endgame():
-                            break
-                    elif val2 < 21:
-                        print('\n', val2)
-                        q3 = input('This is your value, do you want to HIT or ABSTAIN?  [H/A]').lower()
-                        if q3.startswith('h'):
+                    break
+                elif value == 21:
+                    print('YOU HAVE WON!!!!')
+                    data_file = open('wins.txt', 'r')
+                    win_total = int(data_file.read())
+                    win_total += 1
+                    print('\n\n...................',win_total,' TOTAL WINS...................\n\n')
+                    data_file.close()
+                    data_file = open('wins.txt', 'w')
+                    data_file.write(str(win_total))
+                    data_file.close()
                     
-                            card5 = random.randint(1,10)
-                            print('Your new card is ', card5)
-                            val3 = val2 + card5
-                            print('You have a value of ', val3)
-
-                            if val3 > 21:
-                                print('SORRY, you have lost the game')
-                                if not endgame():
-                                    break
-                            elif val3 == 21:
-                                print('CONGRATULAIONS, you have won the game')
-                                if not endgame():
-                                    break
-                            elif val3 < 21:
-                                print('\n', val3)
-                                q4 = input('This is your value, do you want to HIT or ABSTAIN?  [H/A]').lower()
-                                if q4.startswith('h'):
-                            
-                                    card6 = random.randint(1,10)
-                                    print('Your new card is ', card6)
-                                    val4 = val3 + card6
-                                    print('You have a value of ', val4)
-
-                                    if val4 > 21:
-                                        print('SORRY, you have lost the game')
-                                        if not endgame():
-                                            break
-                                    elif val4 == 21:
-                                        print('CONGRATULAIONS, you have won the game')
-                                        if not endgame():
-                                            break
-                                    elif val4 < 21:
-                                        print('\n', val4)
-                                        q5 = input('This is your value, do you want to HIT or ABSTAIN?  [H/A]').lower()
-                                        if q5.startswith('h'):
-
-                                            card7 = random.randint(1,10)
-                                            print('Your new card is ', card7)
-                                            val5 = val4 + card7
-                                            print('You have a value of ', val5)
-
-                                            if val5 > 21:
-                                                print('SORRY, you have lost the game')
-                                                if not endgame():
-                                                    break
-                                            elif val5 == 21:
-                                                print('CONGRATULAIONS, you have won the game')
-                                                if not endgame():
-                                                    break
-                                            elif val4 < 21:
-                                                break
-                                        
-                                        elif q5.startswith('a'):
-                                            print('Your value is ', val4)
-                                            global check
-                                            #Check is global so that it ca be called in compturn 
-                                            #check is reassigned and stored in the class, then compturn is called
-                                            check = reassign(val4)
-                                            check.reassign_pv()
-                                            compturn()
-                                            break
-
-                                elif q4.startswith('a'):
-                                    print('Your value is ', val3)
-                                    check = reassign(val3)
-                                    check.reassign_pv()
-                                    compturn()
-                                    break                    
-
-                        elif q3.startswith('a'):
-                            print('Your value is ', val2)
-                            check = reassign(val2)
-                            check.reassign_pv()
-                            compturn()
-                            break
-
-                elif q2.startswith('a'):
-                    print('Your value is', val)
-                    check = reassign(val)
+                    break
+                else:
+                    check = reassign(value)
                     check.reassign_pv()
                     compturn()
-                    break    
+                    break
 
-        elif q.startswith('a'):
-            print('You have a value of ', card1+card2)
-            check = reassign(card1+card2)
-            check.reassign_pv()
-            compturn()
-            break
+
+            if value > 21:
+                print("YOU LOSE!!!")
+                #if not endgame():
+                #    break
+            elif value == 21:
+                print('YOU HAVE WON!!!!')
+                data_file = open('wins.txt', 'r')
+                win_total = int(data_file.read())
+                win_total += 1
+                print('\n\n...................',win_total,' TOTAL WINS...................\n\n')
+                data_file.close()
+                data_file = open('wins.txt', 'w')
+                data_file.write(str(win_total))
+                data_file.close()
+                #if not endgame():
+                #    break
+            else:
+                check = reassign(value)
+                check.reassign_pv()
+                compturn()
+                break
+            #compturn()
+    '''
+    question = input('AUTOMATED PLAY?   [y/n]').lower()
+    if question.startswith('y'):
+        auto_play()
+    else:
+        manual_play()
+    '''
+
+    auto_play()
+            
+
 
 def play():
     #This function starts the game then goes into the player turn.
@@ -399,20 +363,11 @@ def play():
             game_on = False
 
         while game_on:
-
+            
             question = ' '
 
             while not (question == 'y') or (question == 'n'):
-                question = input('Alright this is REALLY important.\n\t If you still want to play BLACKJACK, type Y, if not type N... [y/n] ').lower()
-                if question.startswith('y'):
-                    print("Alright here are the rules...\n\t You play the dealer\n\t Whoever gets closest to 21 wins\n\t If you go over 21 you loose!\n\t The dealer will always select HIT if he has a value of 16 or less\n\t There are no KIngs/Queens/Jokers \n\t You go first ")
-                    playerturn()
-                elif question.startswith('n'):
-                    print('Oh okay, bye.')
-                    game_on = False
-                    break
-                else:
-                    continue
+                playerturn()
         break
 
 play()
